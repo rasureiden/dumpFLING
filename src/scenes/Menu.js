@@ -27,13 +27,9 @@ class Menu extends Phaser.Scene {
 
         // show menu text
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'dumpFLING', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, 'Use ←→ arrows to move & (F) to fire', menuConfig).setOrigin(0.5);
         menuConfig.backgroundColor = '#00FF00';
         menuConfig.color = '#000';
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press ← for One Player or → for Two Player', menuConfig).setOrigin(0.5);
-        // player modes
-        this.onePlayer = false;
-        this.twoPlayer = false;
 
         // define keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -48,19 +44,17 @@ class Menu extends Phaser.Scene {
                 gameTimer: 60000
             }
             this.sound.play('sfx_select');
-            this.scene.start('playScene');
-            this.onePlayer = true;
+            this.scene.start('onePlayScene');
         }
 
         if(Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
             // two player
             game.settings = {
                 spaceshipSpeed: 4,
-                gameTimer: 45000
+                gameTimer: 20000
             }
             this.sound.play('sfx_select');
-            this.scene.start('playScene');
-            this.twoPlayer = true;
+            this.scene.start('twoPlayScene');
         }
     } // end update()
 } // end class 
