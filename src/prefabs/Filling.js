@@ -1,5 +1,5 @@
-// Rocket prefab
-class Rocket extends Phaser.GameObjects.Sprite {
+// filling prefab
+class Filling extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, texture, frame, leftKey, rightKey, fireKey) {
         super(scene, x, y, texture, frame);
 
@@ -10,7 +10,7 @@ class Rocket extends Phaser.GameObjects.Sprite {
         this.fireKey = fireKey;
         this.isFiring = false;
         this.moveSpeed = 2;
-        this.sfxRocket = scene.sound.add('sfx_rocket'); // add rocket sfx
+        this.sfxFling = scene.sound.add('sfx_fling'); // add filling sfx
     } // end constructor
 
     update() {
@@ -26,7 +26,7 @@ class Rocket extends Phaser.GameObjects.Sprite {
         // fire button
         if(Phaser.Input.Keyboard.JustDown(this.fireKey) && !this.isFiring) {
             this.isFiring = true;
-            this.sfxRocket.play();  // play rocket sfx
+            this.sfxFling.play();  // play filling sfx
         }
         
         // if fired, move up
@@ -44,4 +44,4 @@ class Rocket extends Phaser.GameObjects.Sprite {
         this.isFiring = false;
         this.y = game.config.height - borderUISize - borderPadding;
     } // end reset()
-} // end class Rocket
+} // end class filling

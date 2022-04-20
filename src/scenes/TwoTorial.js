@@ -1,18 +1,16 @@
-class Menu extends Phaser.Scene {
+class TwoTorial extends Phaser.Scene {
     constructor() {
-        super("menuScene");
+        super("twoTorialScene");
     }
 
     preload() {
-        // load audio
-        this.load.image('menu', './assets/menu.png');
+        this.load.image('2torial', './assets/TWOtorial.png');
         this.load.audio('sfx_select', './assets/select.mp3');
-        this.load.audio('sfx_wrap', './assets/wrap.mp3');
-        this.load.audio('sfx_fling', './assets/fling.mp3');
+        
     } // end preload()
 
     create() {
-        this.add.image(0, 0, 'menu').setOrigin(0, 0);
+        this.add.image(0, 0, '2torial').setOrigin(0, 0);
 
         // define keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -20,16 +18,6 @@ class Menu extends Phaser.Scene {
     } // end create()
 
     update() {
-        if(Phaser.Input.Keyboard.JustDown(keyLEFT)) {
-            // one player
-            game.settings = {
-                spaceshipSpeed: 3,
-                gameTimer: 60000
-            }
-            this.sound.play('sfx_select');
-            this.scene.start('oneTorialScene');
-        }
-
         if(Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
             // two player
             game.settings = {
@@ -37,7 +25,7 @@ class Menu extends Phaser.Scene {
                 gameTimer: 60000
             }
             this.sound.play('sfx_select');
-            this.scene.start('twoTorialScene');
+            this.scene.start('twoPlayScene');
         }
     } // end update()
 } // end class 
